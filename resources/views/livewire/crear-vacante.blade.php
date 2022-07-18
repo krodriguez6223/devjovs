@@ -32,6 +32,13 @@
                   id="salario"
                   name="salario" 
                   :value="old('salario')">
+                  <option >-- Seleccione --</option>
+                  @foreach ($salarios as $salario )
+                  <option value="{{ $salario->id }}" >{{ $salario->salario }}</option>
+                      
+                  @endforeach
+
+
                 </select>
              
                   <p class="text-gray-600 text-xs italic">Escriba el salario del puesto</p>
