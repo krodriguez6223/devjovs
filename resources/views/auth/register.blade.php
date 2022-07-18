@@ -45,14 +45,18 @@
                                 name="password_confirmation" required />
             </div>
 
-            <div class="flex items-center justify-end mt-4 my-5">
-                <a class=" text-sm text-gray-500 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Ya estás registrado?') }}
-                </a>
+            <div class="flex justify-between my-5">
+                <x-link :href="route('login')">
+                    Iniciar sesión
+                </x-link>
+
+                <x-link :href="route('password.request')">
+                    Olvidaste tu contraseña ?
+                </x-link>
 
             </div>
             <x-button class="w-full justify-center">
-                {{ __('Registrar') }}
+                {{ __('Registrar cuenta') }}
             </x-button>
         </form>
     </x-auth-card>
