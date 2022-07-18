@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\VacanteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,8 +18,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [VacanteController::class, 'index'] )->middleware(['auth', 'verified'])->name('vacantes.index');
+//ruta para crear la vista de registro de vacante
+Route::get('/vacantes/create', [VacanteController::class, 'create'] )->middleware(['auth', 'verified'])->name('vacantes.create');
 
 require __DIR__.'/auth.php';
