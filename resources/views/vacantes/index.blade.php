@@ -10,7 +10,7 @@
             @if (session()->has('mensaje'))
                 <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-2" role="alert">
                    
-                    <p class="font-bold">Registro exitoso! - <span class="font-light">  {{ session('mensaje') }}</span></p>
+                    <p class="font-bold"><span class="font-light">  {{ session('mensaje') }}</span></p>
                 </div>
                 
             @endif
