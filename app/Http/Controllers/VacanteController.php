@@ -13,7 +13,8 @@ class VacanteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   //restringe la vista de crear vacante a los desarrolladores
+        $this->authorize('viewAny', Vacante::class);
         //vista de inciio de dashbord para vacantes
         return view('vacantes.index');
     }
@@ -24,7 +25,9 @@ class VacanteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
+    {   
+        //restringe la vista de crear vacante a los desarrolladores
+        $this->authorize('create', Vacante::class);
         //vista para el registro de una nueva vacante
         return view('vacantes.create');
     }
@@ -46,9 +49,11 @@ class VacanteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Vacante $vacante)
     {
-        //
+        return view('vacantes.show', [
+            'vacante' => $vacante
+        ]);
     }
 
     /**

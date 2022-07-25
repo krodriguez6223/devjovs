@@ -18,7 +18,9 @@ class VacantePolicy
      */
     public function viewAny(User $user)
     {
-        //
+        //Restringir para que los dev no puedan crear vacantes
+        return $user->rol === 2;
+
     }
 
     /**
@@ -41,7 +43,8 @@ class VacantePolicy
      */
     public function create(User $user)
     {
-        //
+        //Restringir para que los dev no tenga acceso a la vista de nueva vacante
+        return $user->rol === 2;
     }
 
     /**
