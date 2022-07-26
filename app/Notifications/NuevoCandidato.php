@@ -16,9 +16,11 @@ class NuevoCandidato extends Notification
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($id_vacante, $nombre_vacante, $usuario_id)
     {
-        //
+        $this->id_vacante = $id_vacante;
+        $this->nombre_vacante = $nombre_vacante;
+        $this->usuario_id = $usuario_id;
     }
 
     /**
@@ -29,7 +31,7 @@ class NuevoCandidato extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail', 'database'];
     }
 
     /**
@@ -39,28 +41,23 @@ class NuevoCandidato extends Notification
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
     public function toMail($notifiable)
-    {
+    {   
+        $url = url('/notificaciones');
+        
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->line('Has recibido una nuevo candidato en tu vacante.')
+                    ->line('La vacante es' . $this->nombre_vacante)
+                    ->action('Ver notificaciones ', $url)
+                    ->line('Gracias por utilizar DevJobs');
     }
 
-    /**
-     * Get the array representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
-    public function toArray($notifiable)
-    {
-        return [
-            //
-        ];
-    }
     //almacena las notificaciones en la base de datos
-    public function toDataBase($notificable)
+    public function toDatabase($notifiable)
     {
-
+        return[
+            'id_vacante' => $this->id_vacante,
+            'nombre_vacante' => $this->nombre_vacante,
+            'usuario_id' => $this->usuario_id
+        ];
     }
 }

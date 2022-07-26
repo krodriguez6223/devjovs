@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\NotificaciónController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VacanteController;
 
@@ -26,4 +27,6 @@ Route::get('/vacantes/{vacante}/edit', [VacanteController::class, 'edit'])->midd
 //mostrar vacantes en la pagina de inicio
 Route::get('/vacantes/{vacante}', [VacanteController::class, 'show'])->name('vacantes.show');
 
+//Notifiaciones
+Route::get('/notificaciones', NotificaciónController::class)->middleware(['auth', 'verified'])->name('notificaciones');
 require __DIR__.'/auth.php';

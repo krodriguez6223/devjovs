@@ -38,4 +38,10 @@ class Vacante extends Model
     {
         return $this->hasMany(Candidato::class);
     }
+    //realacion de 1:1 donde una vacante pertenece a un usuario
+    public function reclutador()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+    
 }
