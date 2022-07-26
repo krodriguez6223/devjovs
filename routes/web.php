@@ -17,7 +17,7 @@ use App\Http\Controllers\VacanteController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 Route::get('/dashboard', [VacanteController::class, 'index'])->middleware(['auth', 'verified'])->name('vacantes.index');
 //ruta para crear la vista de registro de vacante
@@ -28,5 +28,5 @@ Route::get('/vacantes/{vacante}/edit', [VacanteController::class, 'edit'])->midd
 Route::get('/vacantes/{vacante}', [VacanteController::class, 'show'])->name('vacantes.show');
 
 //Notifiaciones
-Route::get('/notificaciones', NotificaciónController::class)->middleware(['auth', 'verified'])->name('notificaciones');
+Route::get('/notificaciones', NotificaciónController::class)->middleware(['auth', 'verified', 'rol.reclutador'])->name('notificaciones');
 require __DIR__.'/auth.php';
