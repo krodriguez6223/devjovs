@@ -43,8 +43,11 @@
                     </p>
                   </div>
 
-                  <livewire:postular-vacante />
             @endguest
+             {{-- cannont sirve para restringir acceso, en este caso solo mostrara el fromulario a los dev  --}}
+            @cannot('create', App\Models\Vacante::class)            
+                 <livewire:postular-vacante :vacante="$vacante" />
+            @endcannot
     </div>
     
 </div>
