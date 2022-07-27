@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CandidatoController;
 use App\Http\Controllers\NotificaciónController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VacanteController;
@@ -26,6 +27,8 @@ Route::get('/vacantes/create', [VacanteController::class, 'create'])->middleware
 Route::get('/vacantes/{vacante}/edit', [VacanteController::class, 'edit'])->middleware(['auth', 'verified'])->name('vacantes.edit');
 //mostrar vacantes en la pagina de inicio
 Route::get('/vacantes/{vacante}', [VacanteController::class, 'show'])->name('vacantes.show');
+//mostrar los candidatos de una vacante
+Route::get('/candidatos/{vacante}', [CandidatoController::class, 'index'])->name('candidatos.index');
 
 //Notifiaciones
 Route::get('/notificaciones', NotificaciónController::class)->middleware(['auth', 'verified', 'rol.reclutador'])->name('notificaciones');
