@@ -26,7 +26,7 @@
                                 <div class="flex-1">
                                     <p class="text-xl font-medium text-gray-800">{{ $candidato->user->name }}</p>
                                     <p class="text-sm  text-gray-600"><span class="font-bold">Correo: </span>{{ $candidato->user->email }}</p>
-                                    <p class="text-sm  text-gray-600"> <span class="font-bold">Dia de postulación: </span>{{ $candidato->user->created_at->diffForHumans() }}</p>
+                                    <p class="text-sm  text-gray-600"> <span class="font-bold">Dia de postulación: </span>{{ $candidato->created_at->diffForHumans() }}</p>
                                 </div>
                                 <div>
                                     <a  target="_blank"
